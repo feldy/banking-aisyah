@@ -1,0 +1,42 @@
+# src/main/resources/application.yml
+spring:
+  application:
+    name: bank-syariah-aisyah
+  
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bank_syariah_aisyah
+    username: aisyah_admin
+    password: SecurePass123
+    driver-class-name: org.postgresql.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: false
+  
+  security:
+    jwt:
+      secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+      expiration: 86400000 # 24 hours
+      refresh-token:
+        expiration: 604800000 # 7 days
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+logging:
+  level:
+    com.banksyariah: DEBUG
+    org.springframework.security: DEBUG
